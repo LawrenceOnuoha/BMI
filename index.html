@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoboGarden BMI Calculator</title>
+    <style>
+        /* Functional enclosure of calculator */
+        .container {
+            max-width: 400px;
+            margin: auto auto;
+            padding: 20px;
+            border: 1px solid black;
+            text-align: center;
+            background-color: lightgray;
+        }
+
+        /* Float copywriting to bottom of display */
+        .bottom-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+
+    <!-- Bootstrap CSS file -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Bootstrap change in header sizing -->
+        <h1>
+            BMI
+            <small class="text-body-secondary">Calculator</small>
+        </h1>
+        <!-- Input User data for calculation -->
+        <form>
+            <label for="weight">Weight (kg):</label>
+            <input type="number" id="weight" required><br><br>
+
+            <label for="height">Height (cm):</label>
+            <input type="number" id="height" required><br><br>
+
+            <input type="submit" value="Calculate">
+        </form>
+
+        <h2>Result:</h2>
+        <p id="result"></p><br>
+
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            // Get weight and height values
+            var weight = parseFloat(document.getElementById('weight').value);
+            var height = parseFloat(document.getElementById('height').value) / 100; // Converts cm to meters
+
+            // Calculate BMI
+            var bmi = weight / (height * height);
+
+            // Display result to the closest whole number
+            document.getElementById('result').innerHTML = 'Your BMI is: ' + bmi.toFixed();
+        });
+    </script>
+
+    <!-- RoboGarden Copyright -->
+    <div class="bottom-text"> 
+        <div class="bg-success py-1 mt-5 text-center text-white">
+            &copy;
+            <i>2023 Robogarden Inc.</i>
+        </div>
+    </div>
+
+</body>
+
+</html>
